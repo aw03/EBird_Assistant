@@ -35,8 +35,8 @@ def get_region_hotspots(reg_code):
     else:
         print(f"Error: {response.status_code}, {response.text}") 
 
-def get_region_observations(reg_code):
-    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent", headers=headers)
+def get_region_observations(reg_code, days_back = 30, locId = []):
+    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent", headers=headers,params={"back":days_back, "hotspot":True, "r": locId})
 
     # Check the response status and print the data
     if response.status_code == 200:
@@ -47,8 +47,8 @@ def get_region_observations(reg_code):
     else:
         print(f"Error: {response.status_code}, {response.text}") 
 
-def get_region_observations_by_species(reg_code, species, days_back = 30):
-    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent/{species}", headers=headers, params={"back":days_back, "hotspot":True})
+def get_region_observations_by_species(reg_code, species, days_back = 30, locId = []):
+    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent/{species}", headers=headers, params={"back":days_back, "hotspot":True, "r":locId})
     # Check the response status and print the data
     if response.status_code == 200:
         # print(response.text)
@@ -58,5 +58,12 @@ def get_region_observations_by_species(reg_code, species, days_back = 30):
     else:
         print(f"Error: {response.status_code}, {response.text}") 
 
+# def get_hotspot_observations()
 
-get_region_observations_by_species("US-NY-061", "cedwax")
+
+# get_region_observations_by_species("US-NY-061", "cedwax")
+# get_regions("country", "world")
+# print(get_region_observations("sdfjjl",locId = ["L191107"]) == get_region_observations("dfjhsk",locId = ["L191107"]))
+
+# print(get_region_observations_by_species("US-NY", "cedwax") == get_region_observations_by_species_2("US-NY", "cedwax"))
+
