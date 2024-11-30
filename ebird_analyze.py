@@ -37,13 +37,18 @@ def hot_spot_observations_by_species_dataframe(locId,species):
 
 def region_observations_dataframe(region):
     observations_df = pd.DataFrame(ebird_api.get_region_observations(region))
-    print(observations_df)
+    print(observations_df.columns)
     return observations_df
 
+def region_observations_by_species_dataframe(region,species):
+    observations_df = pd.DataFrame(ebird_api.get_region_observations_by_species(region,species=species))
+    print(observations_df.columns)
+    return observations_df
 
 
 # sub_regions_dataframe("US-MA")
 # region_hotspots_dataframe("US-NY-061")
 # hot_spot_observations_dataframe(["L191107"])
 # hot_spot_observations_by_species_dataframe(["L191107"],species="cedwax")
-region_observations_dataframe("US-NY-061")
+# region_observations_dataframe("US-NY")
+# region_observations_by_species_dataframe("US-NY","cedwax")
