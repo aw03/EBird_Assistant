@@ -35,5 +35,28 @@ def get_region_hotspots(reg_code):
     else:
         print(f"Error: {response.status_code}, {response.text}") 
 
+def get_region_observations(reg_code):
+    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent", headers=headers)
 
-get_region_hotspots("US-NY")
+    # Check the response status and print the data
+    if response.status_code == 200:
+        # print(response.text)
+        data = response.json()  # Parse the JSON response
+        # print(data)
+        return data
+    else:
+        print(f"Error: {response.status_code}, {response.text}") 
+
+def get_region_observations_by_species(reg_code, species, days_back = 30):
+    response = requests.get(API_ENDPOINT + f"data/obs/{reg_code}/recent/{species}", headers=headers, params={"back":days_back, "hotspot":True})
+    # Check the response status and print the data
+    if response.status_code == 200:
+        # print(response.text)
+        data = response.json()  # Parse the JSON response
+        # print(data)
+        return data
+    else:
+        print(f"Error: {response.status_code}, {response.text}") 
+
+
+get_region_observations_by_species("US-NY-061", "cedwax")
