@@ -68,12 +68,3 @@ def get_hotspot_info(locId):
         return data
     else:
         print(f"Error: {response.status_code}, {response.text}") 
-
-# def get_hotspot_observations()
-# get_region_observations_by_species("US-NY-061", "cedwax")
-# get_regions("country", "world")
-# print(get_region_observations("sdfjjl",locId = ["L191107"]) == get_region_observations("dfjhsk",locId = ["L191107"]))
-# print(get_region_observations_by_species("US-NY", "cedwax") == get_region_observations_by_species_2("US-NY", "cedwax"))
-
-# print(get_region_info("US-NY-061"))
-# print(get_hotspot_info("L191107"))

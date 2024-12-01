@@ -43,16 +43,3 @@ def region_info(region):
     latitude = info.get("latitude", "")
     longitude = info.get("longitude", "")
     return [result,latitude,longitude]
-
-# sub_regions_dataframe("US-MA")
-# region_hotspots_dataframe("US-NY-061")
-# hot_spot_observations_dataframe(["L191107"])
-# hot_spot_observations_by_species_dataframe(["L191107"],species="cedwax")
-# nyreg = region_observations_dataframe("US-NY")
-# print(nyreg)
-# print(len(nyreg))
-# print(nyreg["speciesCode"].nunique())
-# print(nyreg[["comName",'howMany']])
-# print(nyreg.loc[nyreg["speciesCode"] == "cedwax"]['howMany'])
-
-# print(region_observations_by_species_dataframe("US-NY","cedwax")["howMany"])
