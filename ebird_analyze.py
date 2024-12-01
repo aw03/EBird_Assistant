@@ -37,6 +37,12 @@ def region_observations_by_species_dataframe(region,species):
     observations_df = pd.DataFrame(ebird_api.get_region_observations_by_species(region,species=species))
     return observations_df
 
+def region_info(region):
+    info = ebird_api.get_region_info(region)
+    result = info.get("result", "")
+    latitude = info.get("latitude", "")
+    longitude = info.get("longitude", "")
+    return [result,latitude,longitude]
 
 # sub_regions_dataframe("US-MA")
 # region_hotspots_dataframe("US-NY-061")

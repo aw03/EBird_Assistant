@@ -25,6 +25,12 @@ st.title("Select a Region!")
 
 st.header(f"Current Region: {st.session_state["region"]}")  
 
+reg_info = ebird_analyze.region_info(repr(st.session_state['region']))
+col1,col2,col3 = st.columns(3)
+col1 = st.metric("Location",reg_info[0],delta=None)
+col2 = st.metric("Latitude",reg_info[1],delta=None)
+col3 = st.metric("Longitude",reg_info[2],delta=None)
+
 st.header("Subregions:")
 if not st.session_state['subregions'].empty:
     st.dataframe(st.session_state['subregions']['name'], width=5000, hide_index=True)
@@ -36,7 +42,7 @@ else:
     st.info("No Subregions of this Region")
 
 if st.button("Go Back One Region"):
-    if st.session_state['region'] == world_region:
+    if str(st.session_state['region']) == str(world_region):
         pass
     else:
         previous_region()
