@@ -13,3 +13,14 @@ class Region:
     def get_parent(self):
         return self.parent
     
+
+class Hotspot:
+    def __init__(self, name, code) -> None:
+        self.hot_name = name
+        self.loc_id = code
+
+    def __repr__(self) -> str:
+        return self.loc_id
+    
+    def __str__(self) -> str:
+        return self.hot_name
