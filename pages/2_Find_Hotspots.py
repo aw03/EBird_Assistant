@@ -13,7 +13,6 @@ st.title("Find Hotspots!")
 def update_hotspot(hotspots, selected_hotspot_name):
     locId = hotspots.at[hotspots.index[hotspots['locName'] == selected_hotspot_name][0], 'locId']
     st.session_state['hotspot'] = Hotspot(name=selected_hotspot_name,code=locId)
-    st.text(repr(locId))
     hotspot_observations = ebird_analyze.hot_spot_observations_dataframe( [str(locId)] )
     if hotspot_observations.empty:
         st.info("This hotspot has no observations in the past 30 days")
